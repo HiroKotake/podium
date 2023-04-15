@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page Sample</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+    <script>
+        function send(table, target) {
+            check = window.confirm(table + "を初期化しますか？");
+            if (check) {
+                check = window.confirm(table + "を本当に初期化しますか？");
+                if (check) {
+                    document.getElementById(target).submit();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+<main>
+    <h2>テーブル一覧</h2>
+    <form action="/<?php echo PWF_ADMIN_DIR;?>/TableInfo/list" method="post">
+    <span class="tabspace1">Database Schema :</span><select  name="Schema">
+<?php foreach ($Schemaes as $key => $db): ?>
+        <option value="<?php echo $db; ?>"<?php if($db == $Schema) {echo ' selected';} ; ?>><?php echo $db; ?></option>
+<?php endforeach; ?>
+    </select>
+    <input type="submit" value="change" class="btnSubmit" />
+    </form>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Table Name</th>
+            <th>Func 1</th>
+            <th>Func 2</th>
+        </tr>
+<?php $counter = 1; ?>
+<?php foreach ($List as $key => $table): ?>
+        <tr>
+            <td><?php echo $counter++; ?></td>
+            <td><?php echo $table; ?></td>
+            <td>
+                <form action="/<?php echo PWF_ADMIN_DIR;?>/TableInfo/columns" method="post">
+                    <input type="hidden" name="tbl" value="<?php echo str_replace('key_', '', $key);?>" />
+                    <input type="hidden" name="token" value="<?php echo $Token;?>"/>
+                    <input type="submit" value="カラム情報" class="btnSubmit"/>
+                </form>
+            </td>
+            <td>
+<?php if ($UserInfo->Level == PWF_AUTH_LEVEL_MASTER): ?>
+                <form id="<?php echo $key;?>" action="/<?php echo PWF_ADMIN_DIR;?>/TableInfo/truncate" method="post">
+                    <input type="hidden" name="tbl" value="<?php echo str_replace('key_', '', $key);?>" />
+                    <input type="hidden" name="token" value="<?php echo $Token;?>"/>
+                    <input type="button" onclick="send('<?php echo $table; ?>','<?php echo $key;?>')" value="初期化" class="btnSubmit"/>
+                    (連番リセット:<input type="checkbox" name="reset" checked="checked"/>)
+                </form>
+<?php endif; ?>
+            </td>
+        </tr>
+<?php endforeach; ?>
+    </table>
+    <br />
+</main>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

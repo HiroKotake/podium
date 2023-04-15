@@ -1,0 +1,89 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Class Plan</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+    <script>
+        window.onload = function() {
+            document.getElementById('adminPlan').style.display = 'none';
+        }
+        function adminPlanShutter(selectValue) {
+            var adminPlan = document.getElementById('adminPlan');
+            if (selectValue == 1) {
+                if (adminPlan.style.display == 'none') {
+                    adminPlan.style.display = '';
+                } else {
+                    adminPlan.style.display = 'none';
+                }
+            } else {
+                adminPlan.style.display = 'none';
+            }
+        }
+
+        function adminPlanShutter2(selectValue) {
+            var adminPlan = document.getElementById('adminPlan');
+            var targetValue = document.getElementById('target').value;
+            console.log('catValue: ' + targetValue)
+            if (targetValue == 1 && selectValue == 0) {
+                adminPlan.style.display = '';
+            } else {
+                adminPlan.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+<main>
+    <span class="font1">クラス作成</span><br /><br />
+    <form action="/<?php echo PWF_ADMIN_DIR;?>/Make/build" post="post" class="formfont">
+        Target:<!-- Application / Admin --> 
+        <select id="target" name="Target" onchange="adminPlanShutter(this.value)">
+            <option value="<?php echo PWF_MAKE_TARGET_APP;?>"><?php echo PWF_MAKE_TARGET_NAME[PWF_MAKE_TARGET_APP];?></option>
+            <option value="<?php echo PWF_MAKE_TARGET_ADM;?>"><?php echo PWF_MAKE_TARGET_NAME[PWF_MAKE_TARGET_ADM];?></option>
+        </select>
+        <br />
+        Type:<!-- Class -->
+        <select id="target" name="Type" onchange="adminPlanShutter2(this.value)">
+            <option value="<?php echo PWF_MAKE_CLASS_CONTROLLER;?>"><?php echo PWF_MAKE_CLASS_NAME[PWF_MAKE_CLASS_CONTROLLER]?></option>
+            <option value="<?php echo PWF_MAKE_CLASS_MODEL;?>"><?php echo PWF_MAKE_CLASS_NAME[PWF_MAKE_CLASS_MODEL]?></option>
+            <option value="<?php echo PWF_MAKE_CLASS_LOGIC;?>"><?php echo PWF_MAKE_CLASS_NAME[PWF_MAKE_CLASS_LOGIC]?></option>
+            <option value="<?php echo PWF_MAKE_CLASS_FACADE;?>"><?php echo PWF_MAKE_CLASS_NAME[PWF_MAKE_CLASS_FACADE]?></option>
+        </select>
+        <br />
+        Class Name: <input type="text" name="Name" /><br />
+        <div id="adminPlan">
+            Category:<!-- Develop / Management -->
+            <select name="Category">
+                <option value="<?php echo PWF_AUTH_CATEGORY_BOTH; ?>"><?php echo PWF_AUTH_CATEGORY_NAME[PWF_AUTH_CATEGORY_BOTH]; ?></option>
+                <option value="<?php echo PWF_AUTH_CATEGORY_DEVEL; ?>"><?php echo PWF_AUTH_CATEGORY_NAME[PWF_AUTH_CATEGORY_DEVEL]; ?></option>
+                <option value="<?php echo PWF_AUTH_CATEGORY_MANAGE; ?>"><?php echo PWF_AUTH_CATEGORY_NAME[PWF_AUTH_CATEGORY_MANAGE]; ?></option>
+            </select>
+            <br />
+            Level: <!-- Masster - Bottom -->
+            <select name="Level">
+                <option value="<?php echo PWF_AUTH_LEVEL_BOTTOM; ?>"><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_BOTTOM]; ?></option>
+                <option value="<?php echo PWF_AUTH_LEVEL_LOW; ?>"><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_LOW]; ?></option>
+                <option value="<?php echo PWF_AUTH_LEVEL_MIDDLE; ?>"><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_MIDDLE]; ?></option>
+                <option value="<?php echo PWF_AUTH_LEVEL_HIGH; ?>"><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_HIGH]; ?></option>
+                <option value="<?php echo PWF_AUTH_LEVEL_TOP; ?>"><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_TOP]; ?></option>
+                <option value="<?php echo PWF_AUTH_LEVEL_MASTER; ?>"><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_MASTER]; ?></option>
+            </select>
+            <br />
+        </div>
+        <br />
+        For Documet: <!-- For PHPDocumentator --><br />
+        category:  <input type="text" name="DocCategory" /><br />
+        package:   <input type="text" name="DocPackage" /><br />
+        author:    <input type="text" name="DocAuthor" value="<?php echo $Authoer; ?>" readonly/><br />
+        license:   <input type="text" name="DocLicense" value="<?php echo $DocTemp['DocLicense']; ?>" /><br />
+        version:   <input type="text" name="DocVersion" value="0.0.1" /><br />
+        copyright: <input type="text" name="DocCopyright" value="<?php echo $DocTemp['DocCopyright']; ?>" readonly /><br />
+        <input type="hidden" name="Token" value="<?php echo $Token; ?>" />
+        <br />
+        <input type="submit" value="Build" class="btnSubmit"/>
+    </form>
+</main>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

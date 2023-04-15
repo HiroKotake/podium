@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Table (Show List)</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+<main>
+<?php if (empty($Dirs) && empty($Files)): ?>
+No File.
+<?php else: ?>
+    <form action="/<?php echo PWF_ADMIN_DIR;?>/Migrate/confirm" method="post">
+        <table>
+            <tr>
+                <th>□</th>
+                <th>Type</th>
+                <th>Name</th>
+            </tr>
+<?php if (!empty($Dir)): ?>
+            <tr>
+                <td>├</td>
+                <td><a href="/<?php echo PWF_ADMIN_DIR;?>/Migrate/show">[Up]</a></td>
+                <td></td>
+            </tr>
+<?php endif; ?>
+<?php foreach ($Dirs as $dir): ?>
+            <tr>
+                <td>├</td>
+                <td>(DB)</td>
+                <td><a href="/<?php echo PWF_ADMIN_DIR;?>/Migrate/show?dir=<?php echo $dir; ?>"><?php echo $dir; ?></a></td>
+            </tr>
+<?php endforeach; ?>
+<?php foreach ($Files as $file): ?>
+            <tr>
+                <td>
+<?php if ($file[3] == 0): ?>
+                    <input type="checkbox" name="Files[]" value="<?php echo $file[0]; ?>" />
+<?php else: ?>
+&#10003;
+<?php endif; ?>
+                </td>
+                <td>(File)</td>
+                <td><?php 
+                        echo $file[0]; 
+                        if ($file[3] == 0) {
+                            echo "<font color='red'>";
+                            if ($file[4] == 0) {
+                                echo " [未実行]"; 
+                            } else {
+                                echo " [データ更新]"; 
+                            }
+                            echo "</font>";
+                        } else {
+                            echo "[実行済み]";
+                        } 
+                ?></td>
+            </tr>
+<?php endforeach; ?>
+        </table>
+        <br />
+        <input type="hidden" name="Dir" value="<?php echo $Dir; ?>" />
+        <input type="hidden" name="Token" value="<?php echo $Token; ?>" />
+        <input type="submit" value="Confirm" class="btnSubmit" />
+    </form>
+<?php endif; ?>
+</main>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

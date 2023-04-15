@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Table (Result)</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATHADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+<main>
+    以下のSQLファイルを実行しました。<br />
+    <ul>
+<?php foreach ($Result as $file => $status): ?>
+        <li>
+            <?php echo $file; ?>:&nbsp;
+<?php if ($status['Result'] != 0): ?>
+            [完了]
+<?php else: ?>
+            <?php echo $status['Message']; ?>
+<?php endif; ?>
+        </li>
+<?php endforeach; ?>
+    </ul>
+<a href="/<?php echo PWF_ADMIN_DIR;?>/Migrate/show?dir=<?php echo $Dir; ?>">戻る</a>
+</main>
+<?php include(PWF_ADMIN_VIEW_PATHADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

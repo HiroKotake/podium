@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>[Podium] TEST INDEX PAGE</title>
+    </head>
+    <body>
+        <h1>TEST CHECK PAGE !</h1>
+        <hr />
+        <h3>Test List</h3>
+        <ui>
+            <li><b>bootstrap系</b></li>
+            <li><a href="http://vmfedora33p/" target="_blank">[bootstrap] Controller Default (コントローラー,メソッド指定無→デフォルト値使用)</a></li>
+            <li><a href="http://vmfedora33p/hoge" target="_blank">[bootstrap] hoge (未定義のコントローラー)</a></li>
+            <li><a href="http://vmfedora33p/Test/index" target="_blank">[bootstrap] index (未定義のメソッド)</a></li>
+            <li><b>view系</b></li>
+            <li><a href="http://vmfedora33p/Test/check?param1=value1&param2=value2" target="_blank">[Test] check</a></li>
+            <li><a href="http://vmfedora33p/Test/check/param1/value1/param2/value2" target="_blank">[Test] check2</a></li>
+            <li><a href="http://vmfedora33p/Test/view?param1=value1&param2=value2" target="_blank">[Test::smarty] view</a></li>
+            <li><a href="http://vmfedora33p/Test/fetch?param1=value3&param2=value4" target="_blank">[Test::smarty] fetch</a></li>
+            <li><a href="http://vmfedora33p/Test/htmlview?param1=value1&param2=value2" target="_blank">[Test::view] htmlview</a></li>
+            <li><a href="http://vmfedora33p/Test/htmlfetch?param1=value3&param2=value4" target="_blank">[Test::view] htmlfetch</a></li>
+            <li><a href="http://vmfedora33p/XmlTest/show" target="_blank">[XmlTest::XML] view</a></li>
+            <li><a href="http://vmfedora33p/XmlTest/fetch" target="_blank">[XmlTest::XML] fetch</a></li>
+            <li><a href="http://vmfedora33p/XmlTest/cshow" target="_blank">[XmlTest::XML] view path ctrl</a></li>
+            <li><a href="http://vmfedora33p/XmlTest/cfetch" target="_blank">[XmlTest::XML] fetch path ctrl</a></li>
+            <li><a href="http://vmfedora33p/XmlTest/save" target="_blank">[XmlTest::XML] save</a></li>
+            <li><a href="http://vmfedora33p/JsonTest/show" target="_blank">[JsonTest::JSON] view</a></li>
+            <li><a href="http://vmfedora33p/JsonTest/fetch" target="_blank">[JsonTest::JSON] fetch</a></li>
+            <li><a href="http://vmfedora33p/JsonTest/cshow" target="_blank">[JsonTest::JSON] view path ctrl</a></li>
+            <li><a href="http://vmfedora33p/JsonTest/cfetch" target="_blank">[JsonTest::JSON] fetch path ctrl</a></li>
+            <li><a href="http://vmfedora33p/Test/dubcheck" target="_blank">[Test::view] 深い階層のクラス呼び出し</a></li>
+            <li><b>DB系</b></li>
+            <li><a href="http://vmfedora33p/DBTest/index" target="_blank">[DBTest] index</a></li>
+            <li><a href="http://vmfedora33p/DBTest/insert" target="_blank">[DBTest] insert (insert record in Users)</a></li>
+            <li><a href="http://vmfedora33p/DBTest/insert2" target="_blank">[DBTest] insert 2 (insert record in Books)</a></li>
+            <li><a href="http://vmfedora33p/DBTest/minsert" target="_blank">[DBTest] prepare insert (insert multi records in Users)</a></li>
+            <li><a href="http://vmfedora33p/DBTest/minsert2" target="_blank">[DBTest] prepare insert 2 (insert multi records in Books)</a></li>
+            <li><a href="http://vmfedora33p/DBTest/search" target="_blank">[DBTest] search (search record in Users)</a></li>
+            <li><a href="http://vmfedora33p/DBTest/psearch" target="_blank">[DBTest] prepare search (search multi records in Users)</a></li>
+            <li><a href="http://vmfedora33p/DBTest/update" target="_blank">[DBTest] update (update record in Books)</a></li>
+            <li><a href="http://vmfedora33p/DBTest/pupdate" target="_blank">[DBTest] prepare update (update multi records in Books)</a></li>
+            <li><a href="http://vmfedora33p/DBTest/getcon" target="_blank">[DBTest] getcon (search) - コネクションを取得して実行</a></li>
+            <li><a href="http://vmfedora33p/DBTest/showColum" target="_blank">[DBTest] showColum (Show Columns) - テーブルの構成情報を取得</a></li>
+            <li><a href="http://vmfedora33p/DBTest/showSQLiteColum" target="_blank">[DBTest] showColum SQLIte (Show Columns) - テーブルの構成情報を取得</a></li>
+            <li><a href="http://vmfedora33p/DBTest/showSQLiteColum2" target="_blank">[DBTest] showColum SQLIte 2 (Show Columns) - テーブルの構成情報を取得</a></li>
+            <li><b>キャッシュ系</b></li>
+            <li><a href="http://vmfedora33p/CacheTest/set/keyone/ichi/keytwo/ni" target="_blank">[CacheTest::Redis] set</a></li>
+            <li><a href="http://vmfedora33p/CacheTest/set2?keythree=san&keyfour=yon" target="_blank">[CacheTest::Redis] set2 (use CacheStrage)</a></li>
+            <li><b>セッション系</b></li>
+            <li><a href="http://vmfedora33p/SessionTest/" target="_blank">[SessionTest::File] index</a></li>
+            <li><a href="http://vmfedora33p/SessionTest/add" target="_blank">[SessionTest::File] セッションに値を追加</a></li>
+            <li><a href="http://vmfedora33p/SessionTest/show" target="_blank">[SessionTest::File] 追加した値を表示</a></li>
+            <li><a href="http://vmfedora33p/SessionTest/add2" target="_blank">[SessionTest::File] static経由でセッションに値を追加</a></li>
+            <li><a href="http://vmfedora33p/SessionTest/show2" target="_blank">[SessionTest::File] static経由で追加した値を表示</a></li>
+            <li><b>Cookie系</b></li>
+            <li><a href="http://vmfedora33p/CookieTest/" target="_blank">[CookieTest::File] index</a></li>
+            <li><a href="http://vmfedora33p/CookieTest/set" target="_blank">[CookieTest::set] クッキーに値を設定</a></li>
+            <li><a href="http://vmfedora33p/CookieTest/get" target="_blank">[CookieTest::gett] クッキーの値を表示</a></li>
+            <li><b>CSRF系</b></li>
+            <li><a href="http://vmfedora33p/CsrfTest/setTest" target="_blank">[CsrfTest::setTest] CSRFを含むフォームを表示</a></li>
+            <li><a href="http://vmfedora33p/CsrfTest/check" target="_blank">[CsrfTest::setTest] CSRFを含むフォームからの送信をチェック</a></li>
+            <li><b>バリデーション系</b></li>
+            <li><a href="http://vmfedora33p/ValidateTest/" target="_blank">[ValidateTest::index] SimpleValidationテスト</a></li>
+            <li><a href="http://vmfedora33p/ValidateTest/valid" target="_blank">[ValidateTest::valid] Validatorテスト</a></li>
+<!--        <li><b>自動実行</b></li>
+            <li><a href="http://vmfedora33p/AutoTest/test" target="_blank">[CsrfTest::setTest] 自動実行テスト (テスト成功確認済み)</a></li>-->
+            <li><b>管理者系 (<a href="http://vmfedora33p/pwfadmin" target="_blank">管理者トップページ</a>)</b></li>
+            <li><b>管理者系 (<a href="http://vmfedora33p/acheck.html" target="_blank">管理者用テストページ</a>)</b></li>
+            <li><a href="http://vmfedora33p/pwfadmin/TestTop" target="_blank">[admin::top] top (メソッド指定無→デフォルト値使用)</a></li>
+            <li><a href="http://vmfedora33p/pwfadmin/TestTop/pinfo" target="_blank">[admin::top] top/pinfo (phpinfo)</a></li>
+            <li><a href="http://vmfedora33p/pwfadmin/TestTop/showSuperVar" target="_blank">[admin::top] スーパーグローバル変数</a></li>
+            <li><a href="http://vmfedora33p/pwfadmin/TestTop/showSuperVar/param1/value1/param2/value2" target="_blank">[admin::top] スーパーグローバル変数 2</a></li>
+            <li><a href="http://vmfedora33p/pwfadmin/TestTop/showSuperVar?param1=value1&param2=value2" target="_blank">[admin::top] スーパーグローバル変数 3</a></li>
+        </ui>
+    </body>    
+</html>

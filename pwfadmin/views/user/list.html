@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin User List</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/tools.js'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+    <table>
+        <caption>管理者一覧</caption>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Level</th>
+            <th>Lapse Data</th>
+            <th>Create Data</th>
+            <th>Function</th>
+        </tr>
+<?php $number = 1; ?>
+<?php foreach($UserList as $user): ?>
+        <tr>
+            <td><?php echo $number++; ?></td>
+            <td><?php echo $user->Profile['Name']; ?></td>
+            <td><?php echo PWF_AUTH_CATEGORY_NAME[$user->Category]; ?></td>
+            <td><?php echo PWF_AUTH_LEVEL_NAME[$user->Level]; ?></td>
+            <td><?php echo @$user->LapseDate; ?></td>
+            <td><?php echo $user->CreateDate; ?></td>
+            <?php if ($UserInfo->Level >= PWF_AUTH_LEVEL_TOP): ?>
+            <td>
+                <button class="btnJump2" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/Users/edit?hd=<?php echo $user->Id; ?>");'>編集</button>
+                <?php if ($UserInfo->Level == PWF_AUTH_LEVEL_MASTER): ?>
+                <button class="btnJump2" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/Users/passwd?hd=<?php echo $user->Id; ?>");'>ﾊﾟｽﾜｰﾄﾞ</button>
+                <?php endif; ?>
+                <button class="btnJump2" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/Users/lapse?hd=<?php echo $user->Id; ?>");'>失効</button>
+                <?php if ($user->StopFlag == PWF_ADMIN_LOGIN_OK):?>
+                <button class="btnJump2" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/Users/stop?hd=<?php echo $user->Id; ?>");'>停止</button>
+                <button class="btnJump2off">再開</button>
+                <?php else: ?>
+                <button class="btnJump2off">停止</button>
+                <button class="btnJump2" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/Users/restart?hd=<?php echo $user->Id; ?>");'>再開</button>
+                <?php endif; ?>
+            </td>
+            <?php endif; ?>
+        </tr>
+<?php endforeach; ?>
+    </table>
+    <br />
+    <button class="btnJump" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/Users/add");'>ユーザを追加</button>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

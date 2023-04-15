@@ -1,0 +1,20 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin User Authority Error.</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+<br />
+<?php if (isset($Message) && !empty($Message)): ?>
+<b><font color="red"><?php echo $Message; ?></font></b>
+<?php else: ?>
+<b><font color="red">権限がありません</font></b>
+<?php endif; ?>
+<br />
+<a href="<?php echo (isset($JumpPage) && !empty($JumpPage)) ? $JumpPage : '/' . PWF_ADMIN_DIR . '/Top';?>">戻る</a><br />
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>
+

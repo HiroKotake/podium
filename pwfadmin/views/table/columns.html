@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page Sample</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/tools.js'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+<main>
+<?php if (!empty($Error)): ?>
+    <font color="red"><?php echo $Error; ?></font>
+<?php endif; ?>
+<?php if (count($Columns) > 0): ?>
+    <table>
+        <caption><?php echo empty($Schema) ? 'default' : $Schema; ?>:<?php echo $Table; ?></caption>
+        <tr>
+            <th>カラム名</th>
+            <th>データ型</th>
+            <th>Null値</th>
+            <th>デフォルト値</th>
+            <th>コメント</th>
+        </tr>
+<?php foreach ($Columns as $line): ?>
+        <tr>
+            <td><?php echo $line['Name']; ?></td>
+            <td><?php echo $line['Type']; ?></td>
+            <td><?php echo $line['Nullable']; ?></td>
+            <td><?php echo $line['Default']; ?></td>
+            <td><?php echo $line['Comment']; ?></td>
+        </tr>
+<?php endforeach; ?>
+    </table>
+<?php endif; ?>
+<br />
+<button class="btnJump" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/TableInfo/list?Schema=<?php echo $Schema;?>");'>戻る</button>
+</main>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

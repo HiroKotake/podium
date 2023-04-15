@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+    <span>
+        <span>
+<?php foreach($ErrorMessage as $msg): ?>
+    <?php if (!empty($msg)): ?>
+            <?php echo $msg; ?><br />
+    <?php endif; ?>
+<?php endforeach; ?>
+        </span>
+    </span>
+    <a href="<?php echo $JumpPage;?>"><?php echo $JumpPageName;?></a>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

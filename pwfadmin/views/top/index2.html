@@ -1,0 +1,139 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Podium Admin Top Page</title>
+    <style type="text/css">
+        .menu_wrap {
+            width: 100%;
+            margin: 0 auto;
+        }
+        .menu_categories {
+            display: flex;
+        }
+        .menu_category {
+            width: 20%;
+            height: 48px;
+            background-color: darkcyan;
+            list-style-type: none;
+            position: relative;
+            transition: all .3s;
+        }
+        .menu_category:hover {
+            background-color: dodgerblue;   
+        }
+        .menu_category:not(:first-child)::before {
+            content: "";
+            width: 1px;
+            height: 100%;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all .3s;
+        }
+        .menu_category:hover::before {
+            background-color: dodgerblue;   
+        }
+        .menu_category a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: azure;
+            font-size: 15px;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            transition: all .3s;
+        }
+        .menu_category:hover a {
+            color: azure;
+        }
+
+        .dropdown_items {
+            visibility: hidden;
+            opacity: 0;
+            width: 100%;
+            position: absolute;
+            top: 48px;
+            left: 0;
+        }
+        .menu_category:hover .dropdown_items {
+            visibility: visible;
+            opacity: 1;
+        }
+        .dropdown_item {
+            background-color: cornflowerblue;
+            list-style-type: none;
+            height: 48px;
+            transition: all .3s;
+            position: relative;
+        }
+        .dropdown_item:not(:first-child)::before {
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: darkcyan;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .dropdown_item:hover {
+            background-color: darkcyan;
+        }
+        .dropdown_item a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: whitesmoke;
+            text-decoration: none;
+            position: relative;
+        }
+        .dropdown_item a::before {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-top: 2px solid whitesmoke;
+            border-left: 2px solid whitesmoke;
+            transform: rotate(135deg);
+            position: absolute;
+            right: 15px;
+            top: calc(50% - 5px)
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="menu_wrap">
+        <ul class="menu_categories">
+            <li class="menu_category">
+                <a href="#">開発</a>
+                <ul class="dropdown_items">
+                    <li class="dropdown_item"><a href="#">テスト</a></li>
+                    <li class="dropdown_item"><a href="#">テスト</a></li>
+                </ul>
+            </li>
+            <li class="menu_category">
+                <a href="#">DB</a>
+                <ul class="dropdown_items">
+                    <li class="dropdown_item"><a href="#">テスト</a></li>
+                    <li class="dropdown_item"><a href="#">テスト</a></li>
+                </ul>
+            </li>
+            <li class="menu_category">
+                <a href="#">サンプル</a>
+            </li>
+            <li class="menu_category">
+                <a href="#">サンプル</a>
+            </li>
+            <li class="menu_category">
+                <a href="#">サンプル</a>
+            </li>
+        </ul>
+    </div> 
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin User Edit</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/tools.js'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+    <main>
+    <h3>ユーザ編集</h3>
+    <form action="/<?php echo PWF_ADMIN_DIR;?>/Users/editExec" method="post">
+        ID: <?php echo $EditUser->Profile['Lid'] ?><br />
+        Category:
+        <?php if ($UserInfo->Level >= PWF_AUTH_LEVEL_TOP): ?>
+        <select id="category" name="category">
+            <option value="<?php echo PWF_AUTH_CATEGORY_DEVEL; ?>"<?php echo $EditUser->Category == PWF_AUTH_CATEGORY_DEVEL ? ' selected':''; ?>><?php echo PWF_AUTH_CATEGORY_NAME[PWF_AUTH_CATEGORY_DEVEL]; ?></option>
+            <option value="<?php echo PWF_AUTH_CATEGORY_MANAGE; ?>"<?php echo $EditUser->Category == PWF_AUTH_CATEGORY_MANAGE ? ' selected':''; ?>><?php echo PWF_AUTH_CATEGORY_NAME[PWF_AUTH_CATEGORY_MANAGE]; ?></option>
+        </select>
+        <?php else: ?>
+            <?php echo PWF_AUTH_CATEGORY_NAME[$UserInfo->Category]; ?>
+        <?php endif; ?>
+        <br />
+        Level:
+        <?php if ($UserInfo->Level >= PWF_AUTH_LEVEL_TOP): ?>
+        <select id="level" name="level">
+            <option value="<?php echo PWF_AUTH_LEVEL_BOTTOM; ?>"<?php echo $EditUser->Level == PWF_AUTH_LEVEL_BOTTOM ? ' selected':'' ?>><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_BOTTOM] ?></option>
+            <option value="<?php echo PWF_AUTH_LEVEL_LOW; ?>"<?php echo $EditUser->Level == PWF_AUTH_LEVEL_LOW ? ' selected':'' ?>><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_LOW] ?></option>
+            <option value="<?php echo PWF_AUTH_LEVEL_MIDDLE; ?>"<?php echo $EditUser->Level == PWF_AUTH_LEVEL_MIDDLE ? ' selected':'' ?>><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_MIDDLE] ?></option>
+            <option value="<?php echo PWF_AUTH_LEVEL_HIGH; ?>"<?php echo $EditUser->Level == PWF_AUTH_LEVEL_HIGH ? ' selected':'' ?>><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_HIGH] ?></option>
+            <option value="<?php echo PWF_AUTH_LEVEL_TOP; ?>"<?php echo $EditUser->Level == PWF_AUTH_LEVEL_TOP ? ' selected':'' ?>><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_TOP] ?></option>
+            <option value="<?php echo PWF_AUTH_LEVEL_MASTER; ?>"<?php echo $EditUser->Level == PWF_AUTH_LEVEL_MASTER ? ' selected':'' ?>><?php echo PWF_AUTH_LEVEL_NAME[PWF_AUTH_LEVEL_MASTER] ?></option>
+        </select>
+        <?php else: ?>
+            <?php echo PWF_AUTH_LEVEL_NAME[$UserInfo->Level]; ?>
+        <?php endif; ?>
+        <br />
+        Profile:<br />
+        Name: <input type="text" id="name" name="name" value="<?php echo $EditUser->Profile['Lid']; ?>" /><br />
+        Mail: <input type="email" id="mail" name="mail" value="<?php echo $EditUser->Profile['Mail']; ?>" /><br />
+        <input type="hidden" id="hdtoken" name="hdtoken" value="<?php echo $EditUser->Id; ?>" />
+        <input type="hidden" id="token" name="Token" value="<?php echo $Token?>" />
+        <input type="submit" value="send" class="btnSubmit" />
+    </form>
+    </main>
+    <button class="btnJump" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/Users/list");'>リストへ戻る</button>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

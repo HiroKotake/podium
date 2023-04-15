@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin User Add</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+        ID: <?php echo $AddUser['ID']; ?><br />
+        <?php $pCount = mb_strlen($AddUser['Password']); ?>
+        Password: <?php echo str_pad('', $pCount, '*'); ?><br />
+        Category: <?php echo PWF_AUTH_CATEGORY_NAME[$AddUser['Category']]; ?><br />
+        Level: <?php echo PWF_AUTH_LEVEL_NAME[$AddUser['Level']]; ?><br />
+        Name: <?php echo $AddUser['Name']; ?><br />
+        Mail: <?php echo $AddUser['Mail']; ?><br />
+    <form action="/<?php echo PWF_ADMIN_DIR;?>/Users/addExec" method="post">
+        <input type="hidden" id="token" name="Token" value="<?php echo $Token;?>" />
+        <input type="submit" value="send" class="btnSubmit" />
+    </form>
+    <form action="/<?php echo PWF_ADMIN_DIR;?>/Users/add" method="post">
+        <input type="hidden" id="token" name="Token" value="<?php echo $Token;?>" />
+        <input type="submit" value="back" class="btnSubmit" />
+    </form>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

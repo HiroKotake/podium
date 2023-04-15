@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Stop Confirm</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/tools.js'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+    <main>
+    <h3>管理者権限即時停止</h3>
+    <?php echo $EditUser->Profile['Name']; ?>の管理者権限を停止させますか？<br />
+    <form action="/<?php echo PWF_ADMIN_DIR;?>/Users/setStop" post="post">
+        <input type="hidden" id="token" name="Token" value="<?php echo $Token; ?>" /><br />
+        <input type="submit" id="sendButton" value="STOP" class="btnSubmit" />
+    </form>
+    </main>
+    <button class="btnJump" onclick='hrefJump("/<?php echo PWF_ADMIN_DIR;?>/Users/list");'>リストへ戻る</button>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

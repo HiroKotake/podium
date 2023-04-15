@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Import (List)</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+<main>
+<?php if ($Result): ?>
+以下のファイルをインポートしました。<br />
+    <ul>
+<?php foreach ($Result as $file => $val): ?>
+        <li>
+            <?php echo $file;?>: インポート<?php echo $val['Result'] ? '完了' : '失敗'; ?>
+<?php if ($val['Result'] == false): ?>
+            <br />
+<?php foreach ($val['Message'] as $msg): ?>
+<?php if (!empty($msg)): ?>
+            [ERROR]&nbsp;<?php echo $msg; ?><br />
+<?php endif; ?>
+<?php endforeach; ?>
+<?php endif; ?>
+        </li>
+<?php endforeach; ?>
+    </ul>
+<?php else: ?>
+インポートに失敗しました。<br />
+<?php endif; ?>
+<a href="/<?php echo PWF_ADMIN_DIR;?>/Import/show?dir=<?php echo $BackDir; ?>">戻る</a>
+</main>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>

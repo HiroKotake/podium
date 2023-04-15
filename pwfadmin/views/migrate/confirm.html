@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Table (Confirm)</title>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/css.tpl'); ?>
+</head>
+<body>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/menu.tpl'); ?>
+<main>
+<?php if (count($Files) > 0): ?>
+    対象DB：<?php echo $Dir; ?><br />
+    対象ファイル：<br />
+    <ul>
+<?php foreach ($Files as $file): ?>
+        <li><?php echo $file; ?></li>
+<?php endforeach; ?>
+    </ul>
+    <br />
+    <form action="/<?php echo PWF_ADMIN_DIR;?>/Migrate/create" method="post">
+        <input type="hidden" name="Token" value="<?php echo $Token; ?>" />
+        <input type="submit" value="Create" class="btnSubmit" />
+    </form>
+<?php else: ?>
+    対象のファイルが選択されていません。<br />
+<?php endif; ?>
+    <br />
+    <a href="/<?php echo PWF_ADMIN_DIR;?>/Migrate/show?dir=<?php echo $Dir; ?>">前に戻る</a>
+</main>
+<?php include(PWF_ADMIN_VIEW_PATH . 'common/footer.tpl');?>
+</body>
+</html>
